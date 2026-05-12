@@ -28,8 +28,10 @@ from urllib.parse import urlparse
 
 import streamlit as st
 
-CONFIG_PATH = Path("/data/config.json")
-UV_CONFIG_PATH = Path.home() / ".config" / "uv" / "uv.toml"
+CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", "/data/config.json"))
+UV_CONFIG_PATH = Path(
+    os.environ.get("UV_CONFIG_PATH", Path.home() / ".config" / "uv" / "uv.toml")
+)
 
 # ---------- helpers ----------
 
