@@ -200,7 +200,10 @@ def section_dryrun(pkg: str):
     if not pkg:
         return ""
     rc, out, err = run(
-        ["uv", "pip", "install", "--dry-run", "--no-cache", "--system", pkg],
+        [
+            "uv", "pip", "install", "--dry-run", "--no-cache",
+            "--system", "--break-system-packages", pkg,
+        ],
         timeout=120,
     )
     return (
